@@ -5,13 +5,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
 @Service
-public class HelloService {
+public class RemoteHelloService {
 
     private final RestClient restClient;
 
-    public HelloService(RestClient.Builder restClientBuilder,
-                        // must be here to make sure the value is injected during application startup
-                        @Value("${hello.service.url}") String url) {
+    public RemoteHelloService(RestClient.Builder restClientBuilder,
+                              // must be here to make sure the value is injected during application startup
+                              @Value("${hello.service.url}") String url) {
         this.restClient = restClientBuilder
                 .baseUrl(url)
                 .build();
