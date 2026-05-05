@@ -3,4 +3,4 @@ spring:
     name: demo
 hello:
   service:
-    url: http:/localhost:9999/hello
+    url: http://localhost:9999
