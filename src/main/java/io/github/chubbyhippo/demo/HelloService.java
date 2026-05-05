@@ -12,10 +12,10 @@ public class HelloService {
     }
 
     public HelloResponse getHello(HelloRequest helloRequest) {
-        try {
+//        try {
             return remoteHelloService.getHelloWithRetry(helloRequest);
-        } catch (Exception e) {
-            return new HelloResponse("Cannot get a message from remote server");
-        }
+//        } catch (Exception e) {
+//            return new HelloResponse("Cannot get a message from remote server");
+//        }
     }
 }
