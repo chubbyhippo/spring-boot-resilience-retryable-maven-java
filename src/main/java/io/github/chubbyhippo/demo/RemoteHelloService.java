@@ -1,12 +1,18 @@
 package io.github.chubbyhippo.demo;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.resilience.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.nio.channels.ClosedChannelException;
+
 @Service
 public class RemoteHelloService {
+
+    private static final Logger log = LoggerFactory.getLogger(RemoteHelloService.class);
 
     private final RestClient restClient;
 
@@ -18,9 +24,11 @@ public class RemoteHelloService {
                 .build();
     }
 
-    @Retryable(includes =  { Exception.class })
+    @Retryable
     HelloResponse getHelloWithRetry(HelloRequest request) {
-        return restClient.get().uri("/hello", request.name())
+        log.info("Get hello from remote server");
+        return restClient.get()
+                .uri("/hello", request.name())
                 .retrieve()
                 .body(HelloResponse.class);
     }
