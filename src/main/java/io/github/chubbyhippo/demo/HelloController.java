@@ -1,5 +1,6 @@
 package io.github.chubbyhippo.demo;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,5 +16,10 @@ public class HelloController {
     @PostMapping("/hello")
     HelloResponse getHello(@RequestBody HelloRequest request) {
         return helloService.getHello(request);
+    }
+
+    @GetMapping("/hello")
+    HelloResponse getHello() {
+        return helloService.getHello(new HelloRequest("Retry"));
     }
 }
