@@ -7,8 +7,6 @@ import org.springframework.resilience.annotation.Retryable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
-import java.nio.channels.ClosedChannelException;
-
 @Service
 public class RemoteHelloService {
 
