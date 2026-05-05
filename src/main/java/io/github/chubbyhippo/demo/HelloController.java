@@ -2,6 +2,8 @@ package io.github.chubbyhippo.demo;
 
 import org.springframework.resilience.annotation.Retryable;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -12,8 +14,8 @@ public class HelloController {
         this.helloService = helloService;
     }
 
-    @GetMapping("/hello")
-    HelloResponse getHello(HelloRequest request) {
+    @PostMapping("/hello")
+    HelloResponse getHello(@RequestBody HelloRequest request) {
         return helloService.getHello(request);
     }
 }
