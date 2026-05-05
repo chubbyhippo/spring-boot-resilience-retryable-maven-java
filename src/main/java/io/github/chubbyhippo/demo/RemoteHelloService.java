@@ -22,7 +22,7 @@ public class RemoteHelloService {
                 .build();
     }
 
-    @Retryable
+    @Retryable(includes = {Exception.class})
     HelloResponse getHelloWithRetry(HelloRequest request) {
         log.info("Get hello from remote server");
         return restClient.get()
